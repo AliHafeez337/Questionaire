@@ -1,0 +1,107 @@
+type Query {
+  users(name: String): [User!]!
+  questionaires(titleOrBody: String): [Questionaire!]!
+  questions(text: String): [Question!]!
+  answers(text: String): [Answer!]!
+  me: User!
+  questionaire(id: String!): Questionaire!
+  question(id: String!): Question!
+  answer(id: String!): Answer!
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): User!
+  deleteUser(id: ID!): User!
+  updateUser(id: ID!, data: UpdateUserInput!): User!
+
+  createQuestionaire(data: CreateQuestionaireInput!): Questionaire!
+  deleteQuestionaire(id: ID!): Questionaire!
+  updateQuestionaire(id: ID!, data: UpdateQuestionaireInput!): Questionaire!
+  
+  createQuestion(data: CreateQuestionInput!): Question!
+  deleteQuestion(id: ID!): Question!
+  updateQuestion(id: ID!, data: UpdateQuestionInput!): Question!
+  
+  createAnswer(data: CreateAnswerInput!): Answer!
+  deleteAnswer(id: ID!): Answer!
+  updateAnswer(id: ID!, data: UpdateAnswerInput!): Answer!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  age: Int
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  age: Int
+}
+
+input CreateQuestionaireInput {
+  title: String!
+  body: String!
+  published: Boolean!
+  author: ID!
+}
+
+input UpdateQuestionaireInput {
+  title: String
+  body: String
+  published: Boolean
+}
+
+input CreateQuestionInput {
+  text: String!
+  author: ID!
+  questionaire: ID!
+}
+
+input UpdateQuestionInput {
+  text: String
+}
+
+input CreateAnswerInput {
+  text: String!
+  author: ID!
+  questionaire: ID!
+  question: ID!
+}
+
+input UpdateAnswerInput {
+  text: String
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  age: Int
+  questionaires: [Questionaire!]!
+  questions: [Question!]!
+}
+
+type Questionaire {
+  id: ID!
+  title: String!
+  body: String!
+  published: Boolean!
+  author: User!
+  questions: [Question!]!
+}
+
+type Question {
+  id: ID!
+  text: String!
+  author: User!
+  questionaire: Questionaire!
+}
+
+type Answer {
+  id: ID!
+  text: String!
+  author: User!
+  questionaire: Questionaire!
+  question: Question!
+}
