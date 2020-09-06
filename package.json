@@ -1,0 +1,19 @@
+{
+  "name": "questionaire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AliHafeez337/Questionaire.git"
+  },
+  "author": "AliHafeez337",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AliHafeez337/Questionaire/issues"
+  },
+  "homepage": "https://github.com/AliHafeez337/Questionaire#readme"
+}
